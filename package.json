@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "install:dev": "yarn install",
-    "install:main": "cd main && yarn",
-    "install:secondary": "cd secondary && yarn",
+    "install:main": "cd main && yarn install",
+    "install:secondary": "cd secondary && yarn install",
     "build:main": "cd main && yarn build && mv ./dist ../dist/main",
     "build:secondary": "cd secondary && yarn build && mv ./dist ../dist/secondary",
     "install-all": "npm-run-all --parallel install:*",
