@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "install:dev": "yarn install",
-    "install:main": "cd main && yarn install",
-    "install:secondary": "cd secondary && yarn install",
+    "install:main": "cd main && yarn",
+    "install:secondary": "cd secondary && yarn",
     "build:main": "cd main && yarn build && mv ./dist ../dist/main",
     "build:secondary": "cd secondary && yarn build && mv ./dist ../dist/secondary",
-    "install": "npm-run-all --parallel install:*",
+    "install-all": "npm-run-all --parallel install:*",
     "build": "npm-run-all --parallel build:*"
   },
   "devDependencies": {
