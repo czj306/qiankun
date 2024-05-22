@@ -17,8 +17,8 @@ jobs:
 
       - name: Build Project
         run: |
-          yarn install-all
-          yarn build --base=/qiankun/
+          yarn run install-all
+          yarn run build --base=/qiankun/
 
       - name: Main FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
