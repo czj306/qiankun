@@ -7,7 +7,7 @@
     "install:dev": "yarn install",
     "install:main": "cd main && yarn install",
     "install:secondary": "cd secondary && yarn install",
-    "build:main": "cd main && yarn build &&",
+    "build:main": "cd main && yarn build",
     "build:secondary": "cd secondary && yarn build",
     "install-all": "npm-run-all --parallel install:*",
     "build": "npm-run-all --parallel build:* && mv ./main/dist ./dist/main && mv ./secondary/dist ./dist/secondary"
