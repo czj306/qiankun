@@ -10,14 +10,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install and Build
-        run: |
-          cd main
-          yarn install
-          yarn run build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
         with:
-          personal_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./dist
+          node-version: '16.x'
+
+      - name: Build Project
+        run: |
+          yarn install
+          yarn run build --base=/qiankun/
+
+      - name: Main FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_pwd }}
+          local-dir: ./main/dist/
+          server-dir: /www/wwwroot/web.voto.cafe/main/
+
+      - name: Secondary FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_pwd }}
+          local-dir: ./secondary/dist/
+          server-dir: /www/wwwroot/web.voto.cafe/secondary/
